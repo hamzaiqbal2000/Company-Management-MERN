@@ -1,24 +1,50 @@
-const Joi = require('joi');
-const mongoose = require('mongoose');
+const { validate, User } = require('../models/user');
+const express = require('express');
+const router = express.Router();
 
-const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        minlength: 8,
-        maxlength: 50,
-    }
+router.get('/', async (req, res) => {
+    const users = await User.find();
+    res.send(users);
 })
 
-const User = mongoose.model('User', userSchema);
+router.get('/:id', async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if(!user){
+        return res.status(400).send("The user you are trying to find is not available");
+    }
+    res.send(user);
+})
 
-function validateUser(user){
-    const schema= {
-        name: Joi.String().min(8).max(50).required(),
+router.post('/', async (req, res) => {
+    const { error } = validate(req.body);
+    if(error){
+        return res.status(404).send(error.details[0].message);
     }
 
-    return Joi.validate(user, schema);
-}
+    const user = new User({
+        name: req.body.name
+    })
 
-exports.User = User;
-exports.validate = validateUser;
+    await user.save();
+    res.send(user);
+})
+
+router.put('/:id', async (req, res) => {
+    const { error } = validate(req.body);
+    if(error){
+        return res.status(404).send(error.details[0].message);
+    }
+
+    let user = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+            name: req.body.name,
+        }, {
+            new: true
+        }
+    )
+
+    res.send(user);
+})
+
+module.exports = router;

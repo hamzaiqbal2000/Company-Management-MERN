@@ -1,9 +1,10 @@
-const Joi = require('joi');
-const mongoose = require('mongoose');
 const { teamSchema } = require('./team');
 const { userSchema } = require('./user')
+const Joi = require('joi');
+const mongoose = require('mongoose');
 
-const departmentSchema = mongoose.model({
+
+const departmentSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,

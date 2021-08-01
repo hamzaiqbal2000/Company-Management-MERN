@@ -14,6 +14,7 @@ router.get('/:id', async (req, res) => {
     if(!department){
         return res.status(404).send("The department you have search for is not available")
     }
+    res.send(department);
 })
 
 router.post('/', async (req, res) => {
