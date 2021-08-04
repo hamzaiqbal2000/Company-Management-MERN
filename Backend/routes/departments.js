@@ -1,6 +1,7 @@
 const { validate, Department } = require("../models/department");
 const express = require("express");
 const { User } = require("../models/user");
+const { Team } = require("../models/team");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
@@ -25,29 +26,42 @@ router.post("/", async (req, res) => {
     return res.status(400).send(error.details[0].message);
   }
 
-  const user = await User.findById(req.body.userId);
-  if (!user) return res.status(400).send("Invalid user...");
+  const teams = await Team.findById(req.body.teamsId);
+  if (!teams) return res.status(400).send("Invalid team...");
+
+  // const user = await User.findById(req.body.userId);
+  // if (!user) return res.status(400).send("Invalid user...");
+
+  const incharge = await User.findById(req.body.inChargeId);
+  if (!incharge) return res.status(400).send("Invalid incharge...");
+
+  // const people = await User.findById(req.body.peopleId);
+  // if (!people) return res.status(404).send("Invalid peopleId...");
+
+  // const teamLead = await User.findById(req.body.teamLeadId);
+  // if (!teamLead) return res.status(404).send("Invalid teamleadId...");
 
   //creating a new department
   const department = new Department({
     name: req.body.title,
     teams: [
       {
+        _id: teams._id,
         people: [
           {
-            _id: user._id,
-            name: user.name,
+            //_id: people._id,
+            name: teams.people.name,
           },
         ],
         teamLead: {
-          _id: user._id,
-          name: user.name,
+          //_id: teamLead._id,
+          name: teams.teamLead.name,
         },
       },
     ],
     inCharge: {
-      _id: user._id,
-      name: user.name,
+      _id: incharge._id,
+      name: incharge.name,
     },
   });
 
