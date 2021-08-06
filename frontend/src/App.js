@@ -1,10 +1,10 @@
 import React from "react";
-import DepartmentList from "./components/DepartmentList";
+import Department from "./components/Department";
 
 function App() {
   return (
     <div>
-      <DepartmentList />
+      <Department />
     </div>
   );
 }

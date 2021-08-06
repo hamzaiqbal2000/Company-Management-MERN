@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import TeamList from "./TeamList";
 
-const DepartmentList = () => {
-  const [departments, setDepartments] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/users")
-      .then((data) => {
-        setDepartments(data.data[0]);
-        console.log(data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+const DepartmentList = ({ department, setDepartments }) => {
+  const [departmentList, setDepartmentList] = useState([]);
+  //events
+  const departmentHandler = () => {
+    setDepartmentList(department.teams.map((team) => team));
+  };
 
-  return <div>{departments && <h1>{departments.name}</h1>}</div>;
+  return (
+    <div className="department-list">
+      <button onClick={departmentHandler}>{department.name}</button>
+      <h2>{departmentList}</h2>
+    </div>
+  );
 };
 
 export default DepartmentList;
