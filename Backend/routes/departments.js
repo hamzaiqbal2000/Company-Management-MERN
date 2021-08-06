@@ -35,33 +35,33 @@ router.post("/", async (req, res) => {
   const incharge = await User.findById(req.body.inChargeId);
   if (!incharge) return res.status(400).send("Invalid incharge...");
 
-  // const people = await User.findById(req.body.peopleId);
-  // if (!people) return res.status(404).send("Invalid peopleId...");
+  //const people = await User.findById(req.body.peopleId);
+  //if (!people) return res.status(404).send("Invalid peopleId...");
 
-  // const teamLead = await User.findById(req.body.teamLeadId);
-  // if (!teamLead) return res.status(404).send("Invalid teamleadId...");
+  //const teamLead = await User.findById(req.body.teamLeadId);
+  //if (!teamLead) return res.status(404).send("Invalid teamleadId...");
 
   //creating a new department
   const department = new Department({
-    name: req.body.title,
+    name: req.body.name,
     teams: [
       {
         _id: teams._id,
-        people: [
-          {
-            //_id: people._id,
-            name: teams.people.name,
-          },
-        ],
-        teamLead: {
-          //_id: teamLead._id,
-          name: teams.teamLead.name,
-        },
+        // people: [
+        //   {
+        //     _id: people._id,
+        //     name: teams.people.name,
+        //   },
+        // ],
+        // teamLead: {
+        //   _id: teamLead._id,
+        //   name: teams.teamLead.name,
+        // },
       },
     ],
     inCharge: {
       _id: incharge._id,
-      name: incharge.name,
+      // name: incharge.name,
     },
   });
 

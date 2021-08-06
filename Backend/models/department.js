@@ -12,23 +12,23 @@ const departmentSchema = mongoose.Schema({
   },
   teams: [
     {
-      type: teamSchema,
-      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "team",
     },
   ],
   inCharge: {
-    type: userSchema,
-    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
   },
 });
 
-const Department = mongoose.model("Department", departmentSchema);
+const Department = mongoose.model("department", departmentSchema);
 
 function validateDepartment(department) {
   const schema = {
-    name: Joi.string().min(4).max(50).required(),
-    teamsId: Joi.objectId().required(),
-    inChargeId: Joi.objectId().required(),
+    name: Joi.string().min(4).max(50),
+    teamsId: Joi.array().items(Joi.objectId()),
+    inChargeId: Joi.objectId(),
   };
 
   return Joi.validate(department, schema);

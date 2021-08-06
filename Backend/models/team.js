@@ -6,22 +6,22 @@ const mongoose = require("mongoose");
 const teamSchema = mongoose.Schema({
   people: [
     {
-      type: userSchema,
-      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
     },
   ],
   teamLead: {
-    type: userSchema,
-    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
   },
 });
 
-const Team = mongoose.model("Team", teamSchema);
+const Team = mongoose.model("team", teamSchema);
 
 function validateTeam(team) {
   const schema = {
-    peopleId: Joi.array().items(Joi.objectId().required()),
-    teamLeadId: Joi.objectId().required(),
+    peopleId: Joi.array().items(Joi.objectId()),
+    teamLeadId: Joi.objectId(),
   };
   return Joi.validate(team, schema);
 }

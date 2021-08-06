@@ -26,7 +26,6 @@ router.post("/", async (req, res) => {
     res.status(400).send(error.details[0].message);
   }
 
-  //for (let i = 0; i < req.body.peopleId.length; i++) {
   const people = await User.findById(req.body.peopleId);
   if (!people) return res.status(404).send("Invalid peopleId...");
 

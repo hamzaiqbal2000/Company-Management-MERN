@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5001");
   const users = await User.find();
   res.send(users);
 });
