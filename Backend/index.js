@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5001");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   next();
 });
 require("./startup/db")();

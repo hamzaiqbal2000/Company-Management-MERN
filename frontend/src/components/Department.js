@@ -9,7 +9,7 @@ const Department = () => {
       .get("http://localhost:5000/api/departments")
       .then((data) => {
         setDepartments(data.data);
-        console.log(data.data);
+        //console.log(data.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -18,11 +18,7 @@ const Department = () => {
     <div className="department">
       {departments &&
         departments.map((department) => (
-          <DepartmentList
-            department={department}
-            setDepartments={setDepartments}
-            key={department._id}
-          />
+          <DepartmentList department={department} key={department._id} />
         ))}
     </div>
   );
