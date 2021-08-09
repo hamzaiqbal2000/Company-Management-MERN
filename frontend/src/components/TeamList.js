@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const TeamList = ({ team1, department }) => {
-  const [teams, setTeams] = useState(team1);
+  const [teams, setTeams] = useState([]);
 
   // useEffect(() => {
   //   axios
@@ -16,7 +16,7 @@ const TeamList = ({ team1, department }) => {
 
   return (
     <div className="team-list">
-      <h1>{teams[0]}</h1>
+      <h1>{team1}</h1>
       {/* <h2>{department.inCharge}</h2> */}
       {/* <h2>{teams}</h2> */}
     </div>

@@ -12,6 +12,8 @@ const DepartmentList = ({ department }) => {
   const [peoples, setPeoples] = useState([]);
   const [teamLead, setTeamLead] = useState([]);
   const [incharge, setIncharge] = useState([]);
+  const [input, setInput] = useState("");
+
   //events
 
   const teamHandler = async () => {
@@ -53,7 +55,7 @@ const DepartmentList = ({ department }) => {
         onClick={() => {
           department.teams.map((team) => {
             setTeams(team);
-            // <TeamList team1={teams} />;
+            <TeamList team1={team} />;
             //console.log("teams " + team);
           });
         }}

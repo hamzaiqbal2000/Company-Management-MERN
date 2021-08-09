@@ -19,6 +19,9 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5001");
+  res.append("Access-Control-Allow-Credentials", "true");
+
   const { error } = validate(req.body);
   if (error) {
     return res.status(404).send(error.details[0].message);
