@@ -12,7 +12,6 @@ const DepartmentList = ({ department }) => {
   const [peoples, setPeoples] = useState([]);
   const [teamLead, setTeamLead] = useState([]);
   const [incharge, setIncharge] = useState([]);
-  const [input, setInput] = useState("");
 
   //events
 

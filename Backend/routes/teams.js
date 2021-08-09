@@ -36,12 +36,12 @@ router.post("/", async (req, res) => {
     people: [
       {
         _id: people._id,
-        name: people.name,
+        // name: people.name,
       },
     ],
     teamLead: {
       _id: teamLead._id,
-      name: teamLead.name,
+      // name: teamLead.name,
     },
   });
 

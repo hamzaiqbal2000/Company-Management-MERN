@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const UserAdd = () => {
+  const [input, setInput] = useState("");
+
   const InputHandler = (e) => {
     console.log(e.target.value);
     setInput(e.target.value);
@@ -18,9 +21,9 @@ const UserAdd = () => {
 
   return (
     <div>
-      <div className="searchUser">
+      <div className="createUser">
         <input type="text" onChange={InputHandler} />
-        <button onClick={createUser}>Submit</button>
+        <button onClick={createUser}>Submit User</button>
       </div>
     </div>
   );
