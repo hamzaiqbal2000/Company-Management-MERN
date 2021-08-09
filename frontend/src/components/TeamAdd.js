@@ -4,8 +4,8 @@ import React, { useState } from "react";
 const TeamAdd = () => {
   const [inputUser, setInputUser] = useState("");
   const [inputTeam, setInputTeam] = useState("");
-  const [people, setPeople] = useState("");
-  const [teamLead, setTeamLead] = useState("");
+  const [people, setPeople] = useState([]);
+  const [teamLead, setTeamLead] = useState([]);
 
   //events
   const inputUserHandler = (e) => {
@@ -35,6 +35,7 @@ const TeamAdd = () => {
         teamLeadId: res1.data._id,
       });
       console.log("res2 " + res2.data._id);
+      alert("team added");
     }
   };
 
@@ -47,7 +48,11 @@ const TeamAdd = () => {
           placeholder="Add teamLead"
           onChange={inputTeamHandler}
         />
-        <button onClick={createTeam}>Submit Team</button>
+        <button onClick={createTeam}>Add Team</button>
+      </div>
+      <div>
+        <h5>{people}</h5>
+        <h5>{teamLead}</h5>
       </div>
     </div>
   );

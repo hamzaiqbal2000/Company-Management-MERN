@@ -23,7 +23,7 @@ const UserAdd = () => {
     <div>
       <div className="createUser">
         <input type="text" onChange={InputHandler} />
-        <button onClick={createUser}>Submit User</button>
+        <button onClick={createUser}>Add User</button>
       </div>
     </div>
   );
