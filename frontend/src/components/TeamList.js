@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import TeamList from "./TeamList";
 
 //one departmentr
-const DepartmentList = ({ department }) => {
+const TeamList = ({ department }) => {
   // const [team1, setTeam1] = useState([]);
   //have list/array of ids of teams
   const [teams, setTeams] = useState([]);
@@ -54,7 +53,7 @@ const DepartmentList = ({ department }) => {
         onClick={() => {
           department.teams.map((team) => {
             setTeams(team);
-            <TeamList team1={team} />;
+            // <TeamList team1={team} />;
             //console.log("teams " + team);
           });
         }}
@@ -79,4 +78,4 @@ const DepartmentList = ({ department }) => {
   );
 };
 
-export default DepartmentList;
+export default TeamList;

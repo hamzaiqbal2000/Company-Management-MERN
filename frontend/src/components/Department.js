@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import DepartmentList from "./DepartmentList";
+import TeamList from "./TeamList";
 
 const Department = () => {
   const [departments, setDepartments] = useState([]);
@@ -18,7 +18,7 @@ const Department = () => {
     <div className="department">
       {departments &&
         departments.map((department) => (
-          <DepartmentList department={department} key={department._id} />
+          <TeamList department={department} key={department._id} />
         ))}
     </div>
   );

@@ -22,6 +22,7 @@ const UserAdd = () => {
   return (
     <div>
       <div className="createUser">
+        <h2>Add a new User</h2>
         <input type="text" onChange={InputHandler} />
         <button onClick={createUser}>Add User</button>
       </div>
