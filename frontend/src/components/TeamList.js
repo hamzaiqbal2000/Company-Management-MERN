@@ -25,10 +25,6 @@ const TeamList = ({ department }) => {
     console.log("teams " + teams);
     console.log("town.people " + town.people);
     console.log("peoples " + peoples);
-  };
-  const townHandler = async () => {
-    console.log(town);
-
     const res1 = await axios.get(
       `http://localhost:5000/api/users/${town.people}`
     );
@@ -46,34 +42,87 @@ const TeamList = ({ department }) => {
     );
     setIncharge(res3.data);
   };
+  const townHandler = async () => {
+    console.log(town);
+
+    // const res1 = await axios.get(
+    //   `http://localhost:5000/api/users/${town.people}`
+    // );
+    // console.log(res1.data);
+    // setPeoples(res1.data);
+    // console.log(peoples);
+
+    // const res2 = await axios.get(
+    //   `http://localhost:5000/api/users/${town.teamLead}`
+    // );
+    // setTeamLead(res2.data);
+
+    // const res3 = await axios.get(
+    //   `http://localhost:5000/api/users/${department.inCharge}`
+    // );
+    // setIncharge(res3.data);
+  };
 
   return (
     <div className="department-list">
-      <button
-        onClick={() => {
-          department.teams.map((team) => {
-            setTeams(team);
-            // <TeamList team1={team} />;
-            //console.log("teams " + team);
-          });
-        }}
-      >
-        Department Name: {department.name}
-      </button>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <button
+                className="button-1"
+                onClick={() => {
+                  department.teams.map((team) => {
+                    setTeams(team);
+                    // <TeamList team1={team} />;
+                    //console.log("teams " + team);
+                  });
+                }}
+              >
+                Department Name: {department.name}
+              </button>
+            </td>
+            <td>
+              <button className="button-2" onClick={teamHandler}>
+                teamId: {teams}
+              </button>
+            </td>
+            {/* <td>
+            <button className="button-3" onClick={townHandler}>
+              people and teamLead names
+            </button>
+          </td> */}
+            <td>
+              <h3>
+                Incharge Name: <br />
+                {incharge.name}
+              </h3>
+            </td>
+            <td>
+              <h3>
+                People Name:<br></br>
+                {peoples.name}
+              </h3>
+            </td>
+            <td>
+              <h3>
+                Team Lead Name:<br></br>
+                {teamLead.name}
+              </h3>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
       {/* <button>{team1}</button> */}
       {/* {teams.prototype.map((state) => ( */}
-      <button onClick={teamHandler}>Team ID: {teams} </button>
-      <button onClick={townHandler}>people and teamLead names</button>
-      {teams && <h1>department Incharge: {department.inCharge}</h1>}
+
+      {/* {teams && <h3>department Incharge: {department.inCharge}</h3>} */}
       {/* ))} */}
 
-      <h3>People Id: {town.people}</h3>
-      <h5>{peoples.name}</h5>
-      <h6>{teamLead.name}</h6>
-      <h4>teamLead: {town.teamLead}</h4>
-      <p>
-        <strong>{incharge.name}</strong>
-      </p>
+      {/* <h3>People Id: {town.people}</h3> */}
+
+      {/* <h3>teamLead: {town.teamLead}</h3> */}
     </div>
   );
 };

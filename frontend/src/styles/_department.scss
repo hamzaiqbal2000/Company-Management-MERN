@@ -1,0 +1,16 @@
+.department {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.headings {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  h3 {
+    margin: 80px;
+  }
+}

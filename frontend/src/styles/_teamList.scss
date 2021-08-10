@@ -1,0 +1,46 @@
+.department-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    margin: 20px;
+    width: 230px;
+    height: 40px;
+    font-size: medium;
+    font-weight: 600;
+    //background-color: #005f99;
+    //color: white;
+    border-radius: 5px;
+  }
+}
+
+.button-1 {
+  background-color: #005f99;
+  color: white;
+}
+.button-2 {
+  background-color: #cf0000;
+  color: white;
+}
+.button-3 {
+  background-color: #cf0000;
+  color: white;
+}
+
+table,
+td,
+th {
+  border: 1px solid black;
+  width: 200px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  height: 70px;
+}
