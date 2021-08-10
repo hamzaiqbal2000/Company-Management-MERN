@@ -77,22 +77,22 @@ const DepartmentAdd = () => {
         <h2>Add a new Department</h2>
         <input
           type="text"
-          placeholder="Department Name"
+          placeholder="  Department Name"
           onChange={inputDepartmentHandler}
         />
         <input
           type="text"
-          placeholder="Incharge Name"
+          placeholder="  Incharge Name"
           onChange={inputInchargeHandler}
         />
         <input
           type="text"
-          placeholder="Team member Name"
+          placeholder="  Team member Name"
           onChange={inputMemberHandler}
         />
         <input
           type="text"
-          placeholder="TeamLead Name"
+          placeholder="  TeamLead Name"
           onChange={inputTeamLeadHandler}
         />
         <button onClick={createDepartment}>Add Department</button>

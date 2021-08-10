@@ -43,10 +43,14 @@ const TeamAdd = () => {
     <div>
       <div className="createTeam">
         <h2>Add a new Team</h2>
-        <input type="text" placeholder="Add User" onChange={inputUserHandler} />
         <input
           type="text"
-          placeholder="Add teamLead"
+          placeholder="  User Name"
+          onChange={inputUserHandler}
+        />
+        <input
+          type="text"
+          placeholder="  teamLead Name"
           onChange={inputTeamHandler}
         />
         <button onClick={createTeam}>Add Team</button>
