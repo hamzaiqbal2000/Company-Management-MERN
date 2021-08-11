@@ -36,12 +36,10 @@ router.post("/", async (req, res) => {
     people: [
       {
         _id: people._id,
-        // name: people.name,
       },
     ],
     teamLead: {
       _id: teamLead._id,
-      // name: teamLead.name,
     },
   });
 
@@ -55,21 +53,22 @@ router.put("/:id", async (req, res) => {
     res.status(400).send(error.details[0].message);
   }
 
-  const user = await User.findById(req.body.userId);
-  if (!user) return res.status(404).send("Invalid genre...");
+  const people = await User.findById(req.body.peopleId);
+  if (!people) return res.status(404).send("Invalid peopleId...");
+
+  const teamLead = await User.findById(req.body.teamLeadId);
+  if (!teamLead) return res.status(404).send("Invalid teamleadId...");
 
   let team = await Team.findByIdAndUpdate(
     req.params.id,
     {
       people: [
         {
-          _id: user._id,
-          name: user.name,
+          _id: people._id,
         },
       ],
       teamLead: {
-        _id: user._id,
-        name: user.name,
+        _id: teamLead._id,
       },
     },
     {

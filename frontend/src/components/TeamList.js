@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import DepartmentUpdate from "./DepartmentUpdate";
 
 //one departmentr
 const TeamList = ({ department }) => {
@@ -109,6 +110,9 @@ const TeamList = ({ department }) => {
                 Team Lead Name:<br></br>
                 {teamLead.name}
               </h3>
+            </td>
+            <td>
+              <DepartmentUpdate department={department} />
             </td>
           </tr>
         </tbody>
