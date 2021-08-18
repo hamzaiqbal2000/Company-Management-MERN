@@ -49,44 +49,43 @@ router.post("/", async (req, res) => {
   res.send(department);
 });
 
-router.put("/:id"),
-  async (req, res) => {
-    const { error } = validate(req.body);
-    if (error) {
-      return res.status(400).send(error.details[0].message);
-    }
+router.put("/:id", async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
 
-    const teams = await Team.findById(req.body.teamsId);
-    if (!teams) return res.status(400).send("Invalid team...");
+  const teams = await Team.findById(req.body.teamsId);
+  if (!teams) return res.status(400).send("Invalid team...");
 
-    const incharge = await User.findById(req.body.inChargeId);
-    if (!incharge) return res.status(400).send("Invalid incharge...");
+  const incharge = await User.findById(req.body.inChargeId);
+  if (!incharge) return res.status(400).send("Invalid incharge...");
 
-    let department = await Department.findByIdAndUpdate(
-      req.params.id,
-      {
-        name: req.body.name,
-        teams: [
-          {
-            _id: teams._id,
-          },
-        ],
-        inCharge: {
-          _id: incharge._id,
+  let department = await Department.findByIdAndUpdate(
+    req.params.id,
+    {
+      name: req.body.name,
+      teams: [
+        {
+          _id: teams._id,
         },
+      ],
+      inCharge: {
+        _id: incharge._id,
       },
-      {
-        new: true,
-      }
-    );
-
-    if (!department) {
-      return res
-        .status(404)
-        .send("The department you are trying to find is not available");
+    },
+    {
+      new: true,
     }
+  );
 
-    res.send(department);
-  };
+  if (!department) {
+    return res
+      .status(404)
+      .send("The department you are trying to find is not available");
+  }
+
+  res.send(department);
+});
 
 module.exports = router;
