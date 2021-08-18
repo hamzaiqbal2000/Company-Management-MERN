@@ -1,6 +1,8 @@
 # Company-Management-MERN
 It is a full-stack web application to manage a list of department in a company. Each department has a name, set of teams, and the person in-charge. Each team has a team number, a set of people, and a team lead. It consists of two parts, a RESTful API as the backend and the JavaScript based frontend application.
 
+![dsaasd](https://user-images.githubusercontent.com/45163435/129893746-34192cc2-d678-422c-a77d-be72771bd446.PNG)
+![asdads](https://user-images.githubusercontent.com/45163435/129893867-fb89b906-42e4-4c83-b5c9-ff1ed7b62d6a.PNG)
 
 ## Backend implementation
 Following API endpoints are implemented:
